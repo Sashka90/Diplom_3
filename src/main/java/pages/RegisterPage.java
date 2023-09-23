@@ -1,6 +1,5 @@
 package pages;
 
-import com.github.javafaker.Faker;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +12,6 @@ import java.time.Duration;
 public class RegisterPage {
 
     WebDriver driver;
-    public static Faker faker = new Faker();
 
     private final By inputName = By.xpath("(//input[@name='name'])[1]");
     private final By inputEmail = By.xpath("(//input[@name='name'])[2]");
@@ -26,27 +24,13 @@ public class RegisterPage {
         this.driver = driver;
     }
 
-    String name = faker.name().username();
-    String email = faker.internet().emailAddress();
-    String password = faker.internet().password();
-
-    public RegisterPage inputCorrectData() {
+    public RegisterPage inputData(String name, String email, String password) {
         driver.findElement(inputName).click();
         driver.findElement(inputName).sendKeys(name);
         driver.findElement(inputEmail).click();
         driver.findElement(inputEmail).sendKeys(email);
         driver.findElement(inputPassword).click();
         driver.findElement(inputPassword).sendKeys(password);
-        return this;
-    }
-
-    public RegisterPage inputIncorrectPasswordData() {
-        driver.findElement(inputName).click();
-        driver.findElement(inputName).sendKeys(name);
-        driver.findElement(inputEmail).click();
-        driver.findElement(inputEmail).sendKeys(email);
-        driver.findElement(inputPassword).click();
-        driver.findElement(inputPassword).sendKeys("12345");
         return this;
     }
 

@@ -8,12 +8,26 @@ public class ConstructorTest extends Settings {
 
     @Test
     @DisplayName("Перемещение по вкладкам ингредиентов бургера")
-    @Description("Проверка активности вкладки после клика по ней")
-    public void constructorTabsTest() {
+    @Description("Проверка активности первой вкладки 'Булки' по умолчаию")
+    public void constructorDefaultActiveFirstTabTest() {
         new MainPage(driver)
-                .checkActiveConstructorTab("Булки")
+                .checkActiveConstructorTab("Булки");
+    }
+
+    @Test
+    @DisplayName("Перемещение по вкладкам ингредиентов бургера")
+    @Description("Проверка активности второй вкладки 'Соусы' по клику на нее")
+    public void constructorActiveSecondTabTest() {
+        new MainPage(driver)
                 .clickToConstructorTab("Соусы")
-                .checkActiveConstructorTab("Соусы")
+                .checkActiveConstructorTab("Соусы");
+    }
+
+    @Test
+    @DisplayName("Перемещение по вкладкам ингредиентов бургера")
+    @Description("Проверка активности третей вкладки 'Начинки' по клику на нее")
+    public void constructorActiveThirdTadTest() {
+        new MainPage(driver)
                 .clickToConstructorTab("Начинки")
                 .checkActiveConstructorTab("Начинки");
     }
